@@ -1,4 +1,6 @@
-<div>
+@extends('layouts.app')
+@section('content')
+<div class="form">
     <form action="{{route('player.update', ['player'=> $player->id])}}" method="POST">
         @csrf
         @method('PUT')
@@ -22,7 +24,7 @@
         <input type="submit" value="Submit">
     </form>
 </div>
-
+@endsection
 <style>
     input[type=text], select {
         width: 100%;
@@ -49,7 +51,7 @@
         background-color: #45a049;
     }
 
-    div {
+    .form {
         border-radius: 5px;
         background-color: #f2f2f2;
         padding: 20px;

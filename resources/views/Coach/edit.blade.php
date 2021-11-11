@@ -1,28 +1,30 @@
-<div>
-    <form action="{{route('coach.update', ['coach'=> $coach->id])}}" method="POST">
-        @csrf
-        @method('PUT')
-        <label for="name" >Name</label>
-        <input type="text" id="name" name="firstName" value="{{$coach->firstName}}" placeholder="Club name..">
+@extends('layouts.app')
+@section('content')
+    <div class="form">
+        <form action="{{route('coach.update', ['coach'=> $coach->id])}}" method="POST">
+            @csrf
+            @method('PUT')
+            <label for="name" >Name</label>
+            <input type="text" id="name" name="firstName" value="{{$coach->firstName}}" placeholder="Club name..">
 
-        <label for="name" >Surname</label>
-        <input type="text" id="name" name="lastName" value="{{$coach->lastName}}" placeholder="Club name..">
+            <label for="name" >Surname</label>
+            <input type="text" id="name" name="lastName" value="{{$coach->lastName}}" placeholder="Club name..">
 
-        <label for="country">Country</label>
-        <input type="text" id="country" name="country"  value="{{$coach->country}}" placeholder="Country..">
+            <label for="country">Country</label>
+            <input type="text" id="country" name="country"  value="{{$coach->country}}" placeholder="Country..">
 
-        <label for="age">Age</label>
-        <input type="number" id="age" name="age" value="{{$coach->age}}" placeholder="Budget..">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" value="{{$coach->age}}" placeholder="Budget..">
 
-        <select id="club" name="club_id">
-            @foreach($clubs as $club)
-                <option value="{{$club->id}}">{{$club->name}}</option>
-            @endforeach
-        </select>
-        <input type="submit" value="Submit">
-    </form>
-</div>
-
+            <select id="club" name="club_id">
+                @foreach($clubs as $club)
+                    <option value="{{$club->id}}">{{$club->name}}</option>
+                @endforeach
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+@endsection
 <style>
     input[type=text], select {
         width: 100%;
@@ -49,7 +51,7 @@
         background-color: #45a049;
     }
 
-    div {
+    .form {
         border-radius: 5px;
         background-color: #f2f2f2;
         padding: 20px;

@@ -34,6 +34,10 @@ Route::group(['prefix'=>'admin', 'middleware'=>'role:admin'], function(){
     Route::delete('/delete/{id}', [AdminController::class, 'delete'])->name('admin.destroy');
 });
 
+Route::fallback(function (){
+   return view('index');
+});
+
 
 
 

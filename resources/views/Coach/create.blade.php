@@ -1,29 +1,33 @@
-<h1>Create Coach</h1>
+@extends('layouts.app')
 
-<div>
-    <form action="{{route('coach.store')}}" method="POST">
-        @csrf
-        <label for="name">Name</label>
-        <input type="text" id="name" name="firstName" placeholder="Name..">
+@section('content')
+    <h1>Create Coach</h1>
 
-        <label for="surname">Surname</label>
-        <input type="text" id="surname" name="lastName" placeholder="Surname..">
+    <div class="form">
+        <form action="{{route('coach.store')}}" method="POST">
+            @csrf
+            <label for="name">Name</label>
+            <input type="text" id="name" name="firstName" placeholder="Name..">
 
-        <label for="country">Country</label>
-        <input type="text" id="country" name="country" placeholder="Country..">
+            <label for="surname">Surname</label>
+            <input type="text" id="surname" name="lastName" placeholder="Surname..">
 
-        <label for="age">Age</label>
-        <input type="number" id="age" name="age" placeholder="Age..">
+            <label for="country">Country</label>
+            <input type="text" id="country" name="country" placeholder="Country..">
 
-        <label for="club">Club</label>
-        <select id="club" name="club_id">
-            @foreach($clubs as $club)
-                <option value="{{$club->id}}">{{$club->name}}</option>
-            @endforeach
-        </select>
-        <input type="submit" value="Submit">
-    </form>
-</div>
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" placeholder="Age..">
+
+            <label for="club">Club</label>
+            <select id="club" name="club_id">
+                @foreach($clubs as $club)
+                    <option value="{{$club->id}}">{{$club->name}}</option>
+                @endforeach
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+@endsection
 
 <style>
     input[type=text], select {
@@ -51,7 +55,7 @@
         background-color: #45a049;
     }
 
-    div {
+    .form {
         border-radius: 5px;
         background-color: #f2f2f2;
         padding: 20px;

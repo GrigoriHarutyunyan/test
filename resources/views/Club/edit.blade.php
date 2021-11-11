@@ -1,26 +1,29 @@
-<div>
-    <form action="{{route('club.update', ['club'=> $club->id])}}" method="POST">
-        @csrf
+@extends('layouts.app')
+@section('content')
+    <div class="form">
+        <form action="{{route('club.update', ['club'=> $club->id])}}" method="POST">
+            @csrf
 
-        @method('PUT')
-        <label for="name" >Club Name</label>
-        <input type="text" id="name" name="name" value="{{$club->name}}" placeholder="Club name..">
+            @method('PUT')
+            <label for="name" >Club Name</label>
+            <input type="text" id="name" name="name" value="{{$club->name}}" placeholder="Club name..">
 
-        <label for="stadium">Stadium</label>
-        <input type="text" id="stadium" name="stadium"  value="{{$club->stadium}}" placeholder="Stadium..">
+            <label for="stadium">Stadium</label>
+            <input type="text" id="stadium" name="stadium"  value="{{$club->stadium}}" placeholder="Stadium..">
 
-        <label for="country">Country</label>
-        <input type="text" id="country" name="country"  value="{{$club->country}}" placeholder="Country..">
+            <label for="country">Country</label>
+            <input type="text" id="country" name="country"  value="{{$club->country}}" placeholder="Country..">
 
-        <label for="city">City</label>
-        <input type="text" id="city" name="city"  value="{{$club->city}}" placeholder="City..">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city"  value="{{$club->city}}" placeholder="City..">
 
-        <label for="budget">Budget</label>
-        <input type="number" id="budget" name="budget" value="{{$club->budget}}" placeholder="Budget..">
+            <label for="budget">Budget</label>
+            <input type="number" id="budget" name="budget" value="{{$club->budget}}" placeholder="Budget..">
 
-        <input type="submit" value="Submit">
-    </form>
-</div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+@endsection
 
 <style>
     input[type=text], select {
@@ -48,7 +51,7 @@
         background-color: #45a049;
     }
 
-    div {
+    .form {
         border-radius: 5px;
         background-color: #f2f2f2;
         padding: 20px;

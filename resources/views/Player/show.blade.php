@@ -1,6 +1,8 @@
-@include('index')
+@extends('layouts.app')
+
+@section('content')
 <h2>{{$player->name}}</h2>
-<table>
+<table class="table">
         <tr>
             <th>Name</th>
             <th>Surname</th>
@@ -37,8 +39,7 @@
             @endif
         </tr>
 </table>
-
-@yield('menu')
+@endsection
 <style>
     table {
         font-family: arial, sans-serif;
@@ -55,5 +56,6 @@
     tr:nth-child(even) {
         background-color: #dddddd;
     }
+
 </style>
 

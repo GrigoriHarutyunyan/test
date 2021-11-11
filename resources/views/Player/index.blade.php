@@ -1,6 +1,8 @@
-@include('index')
+@extends('layouts.app')
+
+@section('content')
 <h2>Football Players</h2>
-<h3><a href="{{route('index')}}">Home</a></h3>
+
 <ul class="accordion-menu">
     @foreach($players as $player)
     <li><a href="{{route('player.show', ['player'=> $player->id ])}}">{{$player->firstName}} {{$player->lastName}}</a></li>
@@ -9,8 +11,7 @@
 @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('coach'))
     <a href="{{route('player.create')}}" class="add">Add Club</a>
 @endif
-@yield('menu')
-
+@endsection
 <style>
     li{
         list-style-type: none;

@@ -1,25 +1,28 @@
-<h1>Create Club</h1>
-<div>
-    <form action="{{route('club.store')}}" method="POST">
-        @csrf
-        <label for="name">Club Name</label>
-        <input type="text" id="name" name="name" placeholder="Club name..">
+@extends('layouts.app')
+@section('content')
+    <h1>Create Club</h1>
+    <div class="form">
+        <form action="{{route('club.store')}}" method="POST">
+            @csrf
+            <label for="name">Club Name</label>
+            <input type="text" id="name" name="name" placeholder="Club name..">
 
-        <label for="stadium">Stadium</label>
-        <input type="text" id="stadium" name="stadium" placeholder="Stadium..">
+            <label for="stadium">Stadium</label>
+            <input type="text" id="stadium" name="stadium" placeholder="Stadium..">
 
-        <label for="country">Country</label>
-        <input type="text" id="country" name="country" placeholder="Country..">
+            <label for="country">Country</label>
+            <input type="text" id="country" name="country" placeholder="Country..">
 
-        <label for="city">City</label>
-        <input type="text" id="city" name="city" placeholder="City..">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="City..">
 
-        <label for="budget">Budget</label>
-        <input type="number" id="budget" name="budget" placeholder="Budget..">
+            <label for="budget">Budget</label>
+            <input type="number" id="budget" name="budget" placeholder="Budget..">
 
-        <input type="submit" value="Submit">
-    </form>
-</div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+@endsection
 
 <style>
     input[type=text], select {
@@ -47,7 +50,7 @@
         background-color: #45a049;
     }
 
-    div {
+    .form {
         border-radius: 5px;
         background-color: #f2f2f2;
         padding: 20px;

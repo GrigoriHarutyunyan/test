@@ -1,4 +1,5 @@
-@include('index')
+@extends('index')
+@section('content')
 <h2>{{$coach->firstName}}</h2>
 <table>
         <tr>
@@ -37,7 +38,7 @@
             @endif
         </tr>
 </table>
-@yield('menu')
+@endsection
 <style>
     table {
         font-family: arial, sans-serif;

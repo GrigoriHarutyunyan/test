@@ -41,7 +41,7 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
      */
     public function getClubsForPlayer()
     {
-        return $this->club->select('id','name')->get();;
+        return $this->club->select('id','name')->get();
     }
 
     /**

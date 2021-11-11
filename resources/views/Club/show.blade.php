@@ -1,6 +1,7 @@
-@include('index')
-<h2>{{$club->name}}</h2>
-<table>
+@extends('layouts.app')
+@section('content')
+    <h2>{{$club->name}}</h2>
+    <table>
         <tr>
             <th>Club</th>
             <th>Coach</th>
@@ -22,7 +23,7 @@
             @if(!$club->coach)
                 <td>--------</td>
             @else
-            <td><a href="{{route('coach.show', ['coach'=>$club->coach->id])}}">{{$club->coach->firstName}}</a></td>
+                <td><a href="{{route('coach.show', ['coach'=>$club->coach->id])}}">{{$club->coach->firstName}}</a></td>
             @endif
             <td>{{$club->stadium}}</td>
             <td>{{$club->country}}</td>
@@ -44,24 +45,24 @@
             @endif
 
         </tr>
-</table>
-<table style="margin-top:50px; width:200px">
-    <tr>
-        <th>Players</th>
-    </tr>
-@foreach($club->players as $player)
+    </table>
+    <table style="margin-top:50px; width:200px">
+        <tr>
+            <th>Players</th>
+        </tr>
+        @foreach($club->players as $player)
 
-    <tr>
-        @if(!$player)
-            <td>-------</td>
-        @else
-        <td><a href="{{route('player.show', ['player'=>$player->id])}}">{{$player->firstName}} {{$player->lastName}}</a></td>
-        @endif
-    </tr>
+            <tr>
+                @if(!$player)
+                    <td>-------</td>
+                @else
+                    <td><a href="{{route('player.show', ['player'=>$player->id])}}">{{$player->firstName}} {{$player->lastName}}</a></td>
+                @endif
+            </tr>
 
-@endforeach
-</table>
-@yield('menu')
+        @endforeach
+    </table>
+@endsection
 <style>
     table {
         font-family: arial, sans-serif;

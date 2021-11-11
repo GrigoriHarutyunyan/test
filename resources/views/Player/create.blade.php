@@ -1,6 +1,7 @@
+@extends('layouts.app')
 <h1>Create Player</h1>
-
-<div>
+@section('content')
+<div class="form">
     <form action="{{route('player.store')}}" method="POST">
         @csrf
         <label for="name">Name</label>
@@ -24,7 +25,7 @@
         <input type="submit" value="Submit">
     </form>
 </div>
-
+@endsection
 <style>
     input[type=text], select {
         width: 100%;
@@ -51,7 +52,7 @@
         background-color: #45a049;
     }
 
-    div {
+    .form {
         border-radius: 5px;
         background-color: #f2f2f2;
         padding: 20px;
