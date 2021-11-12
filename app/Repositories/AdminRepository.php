@@ -12,17 +12,6 @@ class AdminRepository extends BaseRepository implements AdminRepositoryInterface
 {
 
     /**
-     * @var Role
-     */
-    private $role;
-
-    public function __construct(Role $role)
-    {
-        $this->role = $role;
-        parent::__construct();
-    }
-
-    /**
      * Specify Model class name
      *
      * @return string
@@ -37,27 +26,21 @@ class AdminRepository extends BaseRepository implements AdminRepositoryInterface
      * @return mixed
      */
 
-
     public function storeRole($data){
         return $this->model
-            ->where('id', $data['id'])
-            ->first()
-            ->assignRole($data['name']);
+                ->where('id', $data['id'])
+                ->first()
+                ->assignRole($data['name']);
     }
 
     /**
      * @param $id
+     * @return mixed
      */
     public function deleteRole($id){
-        $user = $this->model
-            ->where('id', $id)
-            ->first();
-
-        foreach ($user->roles as $role){
-            return $this->model
+        return $this->model
                 ->where('id', $id)
                 ->first()
-                ->removeRole($role->id);
-        }
+                ->syncRoles([]);
     }
 }

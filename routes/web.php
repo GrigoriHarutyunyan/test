@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ClubController;
 use \App\Http\Controllers\PlayerController;
 use \App\Http\Controllers\AdminController;
+use \App\Http\Controllers\Auth\LoginController;
 
 
 /*
@@ -38,11 +39,11 @@ Route::fallback(function (){
    return view('index');
 });
 
-
-
-
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Socialite routes for Google
+
+Route::get('/login/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/login/google/callback', [LoginController::class, 'handleGoogleCallback']);

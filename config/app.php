@@ -177,6 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         NamTran\LaravelMakeRepositoryService\RepositoryServiceProvider::class,
+//        Laravel\Socialite\SocialiteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
     ],
 

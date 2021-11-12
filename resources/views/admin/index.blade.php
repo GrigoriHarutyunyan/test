@@ -1,7 +1,7 @@
 
-@include('layouts.app')
-@yield('navbar')
-@section('menu')
+@extends('layouts.app')
+
+@section('content')
     <h1>All Users</h1>
     <ul>
 
@@ -16,7 +16,7 @@
             </li>
         @endforeach
     </ul>
-
+@endsection
     <style>
         li{
             font-size:20px;
