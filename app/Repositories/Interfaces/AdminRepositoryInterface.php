@@ -18,4 +18,11 @@ interface AdminRepositoryInterface extends RepositoryContract
      * @return mixed
      */
     public function deleteRole($id);
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public function  _registerOrLoginUser($data);
+
 }

@@ -44,9 +44,4 @@ class ClubRepository extends BaseRepository implements ClubRepositoryInterface
             ->first();
     }
 
-    /**
-     * @param $data
-     * @param $id
-     * @return mixed
-     */
 }

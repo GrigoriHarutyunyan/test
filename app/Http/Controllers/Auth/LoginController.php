@@ -3,25 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Services\Auth\LoginService;
+use App\Services\Auth\LoginServiceInterface;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
 
     use AuthenticatesUsers;
 
@@ -33,15 +23,23 @@ class LoginController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * @var LoginService
      */
-    public function __construct()
+    private $loginService;
+
+    /**
+     * @param LoginServiceInterface $loginService
+     */
+    public function __construct(LoginServiceInterface $loginService)
     {
         $this->middleware('guest')->except('logout');
+         $this->loginService = $loginService;
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function logout(Request $request)
     {
         Auth::logout();
@@ -53,30 +51,14 @@ class LoginController extends Controller
      */
     public function redirectToGoogle(): \Symfony\Component\HttpFoundation\RedirectResponse
     {
-        return Socialite::driver('google')->stateless()->redirect();
+        return $this->loginService->redirectToGoogle();
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse|mixed
+     */
     public function handleGoogleCallback()
     {
-        $user = Socialite::driver('google')->stateless()->user();
-
-        $this->_registerOrLoginUser($user);
-
-        return redirect()->route('index');
-    }
-
-    public function _registerOrLoginUser($data)
-    {
-        $user = User::where('email', '=', $data->email)->first();
-
-        if(!$user){
-            $user = new User();
-            $user->name = $data->user['given_name'];
-            $user->email = $data->email;
-            $user->provider_id = $data->id;
-            $user->avatar = $data->avatar;
-            $user->save();
-        }
-        Auth::login($user);
+        return $this->loginService->handleGoogleCallback();
     }
 }

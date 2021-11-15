@@ -27,6 +27,7 @@ class BootstrapServiceProvider extends ServiceProvider
         $this->app->bind(\App\Services\Interfaces\PlayerServiceInterface::class, \App\Services\PlayerService::class);
         $this->app->bind(\App\Services\Interfaces\CoachServiceInterface::class, \App\Services\CoachService::class);
         $this->app->bind(\App\Services\Interfaces\AdminServiceInterface::class, \App\Services\AdminService::class);
+        $this->app->bind(\App\Services\Auth\LoginServiceInterface::class, \App\Services\Auth\LoginService::class);
         //:end-bindings:
     }
 }

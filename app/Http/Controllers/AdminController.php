@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RoleRequest;
+use App\Models\User;
 use App\Services\Interfaces\AdminServiceInterface;
 use App\Services\AdminService;
 
@@ -28,8 +29,8 @@ class AdminController extends Controller
     public function showAllUsers()
     {
         $users = $this->adminService->getAllUsers();
-
         return view('admin.index', compact('users'));
+
     }
 
     /**
